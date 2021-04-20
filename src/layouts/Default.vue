@@ -1,50 +1,53 @@
 <template>
-  <div class="layout">
-    <header class="header">
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <nav class="nav">
-        <g-link class="nav__link" to="/">Home</g-link>
-        <g-link class="nav__link" to="/about/">About</g-link>
-      </nav>
-    </header>
-    <slot/>
-  </div>
+  <v-app>
+    <v-row>
+      <v-col cols="12">
+        <v-main>
+          <NavDrawer />
+          <div class="mainContent">
+            <div class="slotDiv">
+              <slot />
+            </div>
+          </div>
+        </v-main>
+      </v-col>
+    </v-row>
+  </v-app>
 </template>
 
 <static-query>
 query {
   metadata {
-    siteName
+    siteName,
+    siteDescription
   }
 }
 </static-query>
 
+<script>
+  import NavDrawer from "~/components/NavDrawer.vue";
+
+  export default {
+    components: {
+      NavDrawer,
+    },
+  };
+</script>
+
 <style>
-body {
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  margin:0;
-  padding:0;
-  line-height: 1.5;
-}
-
-.layout {
-  max-width: 760px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
-}
-
-.nav__link {
-  margin-left: 20px;
-}
+  .slotDiv {
+    padding-left: 55px;
+  }
+  .row {
+    margin: 0;
+  }
+  .col {
+    padding: 0;
+  }
+  .mainContent {
+    min-height: 100vh;
+  }
+  a {
+    text-decoration: none;
+  }
 </style>
