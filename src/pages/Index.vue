@@ -8,6 +8,7 @@
       hide-delimiter-background
       delimiter-icon="mdi-minus"
       interval="3000"
+      class="slider-css"
     >
       <v-carousel-item v-for="(color, i) in colors" :key="color">
         <v-sheet :color="color" height="100%" tile>
@@ -33,4 +34,7 @@
 </script>
 
 <style scoped>
+  .slider-css {
+    padding-left: 55px;
+  }
 </style>
