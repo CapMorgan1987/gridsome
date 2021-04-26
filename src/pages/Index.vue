@@ -1,21 +1,20 @@
 <template>
   <Layout>
     <v-carousel
-      v-model="model"
       height="100vh"
       cycle
-      :show-arrows="false"
-      hide-delimiter-background
-      delimiter-icon="mdi-minus"
+      progress
+      progress-color="grey"
       interval="3000"
       class="slider-css"
+      hide-delimiter-background
+      hide-delimiters
     >
-      <v-carousel-item v-for="(color, i) in colors" :key="color">
-        <v-sheet :color="color" height="100%" tile>
-          <v-row class="fill-height" align="center" justify="center">
-            <div class="display-3">Slide {{ i + 1 }}</div>
-          </v-row>
-        </v-sheet>
+      <v-carousel-item>
+        <g-image src="~/assets/header.jpg" class="carousel-img" quality="40" />
+        <h1 class="text-slider">
+          Samo nekoliko koraka dijeli vas od online uspjeha
+        </h1>
       </v-carousel-item>
     </v-carousel>
   </Layout>
@@ -26,15 +25,37 @@
     metaInfo: {
       title: "Dobrodošli",
     },
-    data: () => ({
-      model: 0,
-      colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
-    }),
   };
 </script>
 
 <style scoped>
   .slider-css {
-    padding-left: 55px;
+    background-color: #4aade2;
+  }
+  .carousel-img {
+    position: absolute;
+    top: -2000px;
+    bottom: -2000px;
+    left: -2000px;
+    right: -2000px;
+    margin: auto;
+    opacity: 0.4;
+  }
+  .text-slider {
+    position: absolute;
+    bottom: 20%;
+    background-color: #ffffffad;
+    border-radius: 20px;
+    color: #58585a;
+    font-size: 45px;
+    font-weight: 500;
+    padding: 10px;
+    margin: 0 50px;
+  }
+  @media screen and (max-width: 900px) {
+    .text-slider {
+      font-size: 30px !important;
+      margin: 0 10px;
+    }
   }
 </style>

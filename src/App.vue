@@ -1,17 +1,13 @@
   <template>
   <v-app>
-    <v-row>
-      <v-col cols="12">
-        <v-main>
-          <NavDrawer />
-          <DefaultLayout>
-            <transition name="slide-fade" mode="out-in">
-              <router-view />
-            </transition>
-          </DefaultLayout>
-        </v-main>
-      </v-col>
-    </v-row>
+    <NavDrawer />
+    <v-main style="padding: 0px 0px 0px 56px">
+      <DefaultLayout>
+        <transition name="slide-fade" mode="out-in">
+          <router-view />
+        </transition>
+      </DefaultLayout>
+    </v-main>
   </v-app>
 </template>
 
@@ -36,11 +32,8 @@ query {
 </script>
 
 <style>
-  .row {
-    margin: 0;
-  }
-  .col {
-    padding: 0;
+  * {
+    color: #404040;
   }
   a {
     text-decoration: none;
@@ -51,15 +44,26 @@ query {
   .mainContent {
     min-height: 100vh;
   }
+  .img-content {
+    width: 100%;
+  }
   .slide-fade-enter-active {
-    transition: all 1s ease;
+    transition: all 0.3s ease-in;
   }
   .slide-fade-leave-active {
-    transition: all 1s cubic-bezier(1, 0.5, 0.8, 1);
+    transition: all 0.8s ease-out;
   }
-  .slide-fade-enter, .slide-fade-leave-to
-        /* .slide-fade-leave-active below version 2.1.8 */ {
+  .slide-fade-leave-to
+                                                                                /* .slide-fade-leave-active below version 2.1.8 */ {
     transform: translateX(1000px);
     opacity: 0;
+  }
+  .slide-fade-enter {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  .v-window__next,
+  .v-window__prev {
+    display: none !important;
   }
 </style>

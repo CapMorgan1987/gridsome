@@ -7,5 +7,7 @@
 module.exports = {
   siteName: 'AM-Website',
   siteDescription: 'Samo nekoliko koraka dijeli vas od online uspjeha!',
-  plugins: []
+  plugins: [],
+  pathPrefix: "/gridsome",
+
 }
