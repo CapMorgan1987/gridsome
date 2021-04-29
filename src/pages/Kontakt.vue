@@ -19,6 +19,7 @@
                     required
                     outlined
                     clearable
+                    background-color="white"
                   ></v-text-field>
                 </v-col>
 
@@ -30,6 +31,7 @@
                     required
                     outlined
                     clearable
+                    background-color="white"
                   ></v-text-field>
                 </v-col>
 
@@ -39,6 +41,7 @@
                     label="Telefon"
                     outlined
                     clearable
+                    background-color="white"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12">
@@ -47,6 +50,7 @@
                     label="Poruka"
                     outlined
                     clearable
+                    background-color="white"
                   ></v-textarea>
                 </v-col>
                 <v-col cols="12">
