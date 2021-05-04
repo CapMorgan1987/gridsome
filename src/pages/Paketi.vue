@@ -1,3 +1,4 @@
+<!--
 <template>
   <Layout>
     <v-container>
@@ -126,13 +127,54 @@
             <li>Prijava na Google Analytics</li>
           </ul>
           <h3 align="center" class="py-5">
-            <strong>od 750 kn</strong>
+            <strong>od 5000 kn</strong>
           </h3>
         </v-col>
       </v-row>
     </v-container>
   </Layout>
 </template>
+-->
+<template>
+  <Layout>
+    <v-container>
+      <v-row align="center" class="ma-5 pa-5 justify-space-around">
+        <v-col
+          v-for="edge in $page.packages.edges"
+          :key="edge.id"
+          cols="12"
+          md="4"
+          class="pa-5 rounded-xl ma-4 border-paket"
+          style="background-color: #4aade2"
+        >
+          <h3 align="center" style="color: white">{{ edge.node.title }}</h3>
+          <div v-html="edge.node.content" class="py-3 color"></div>
+          <!-- <ul align="left">
+            <li style="color: white">Grafički design landing stranice</li>
+          </ul> -->
+          <h3 align="center" class="py-5">
+            <strong style="color: white">{{ edge.node.price }}</strong>
+          </h3>
+        </v-col>
+      </v-row>
+    </v-container>
+  </Layout>
+</template>
+
+<page-query>
+query{
+  packages: allPackages{
+    edges{
+      node{
+        id
+        title
+        content
+        price
+      }
+    }
+  }
+}
+ </page-query>
 
 <script>
   export default {
@@ -142,8 +184,11 @@
   };
 </script>
 
-<style>
+<style scoped>
   .border-paket {
     border: 2px solid #404040;
+  }
+  .color {
+    color: white !important;
   }
 </style>

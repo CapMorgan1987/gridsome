@@ -3,13 +3,9 @@
     <v-container>
       <v-row align="center" class="ma-5">
         <v-col cols="12" md="3" class="pl-m-10 pr-m-10">
-          <h2 class="mb-3">O Nama</h2>
+          <!-- <h2 class="mb-3">{{ $static.pages.header1 }}</h2> -->
           <p>
-            U današnje vrijeme prezentacija poduzeća i/ili proizvoda na
-            internetu i društvenim mrežama ključna je za uspješno poslovanje. Uz
-            nas unaprijedite svoje poslovanje brzo i kvalitetno! AM-WEBSITE nudi
-            vam izradu web stranica i uslugu digitalnog marketinga osluškujući
-            želje i potrebe svojih klijenata.
+            <!-- {{ $static.pages.description }} -->
           </p>
         </v-col>
         <v-col cols="12" md="9">
@@ -20,7 +16,18 @@
     </v-container>
   </Layout>
 </template>
-
+<!--
+<static-query>
+query{
+ pages(id: "2"){
+   id
+  title
+  header1
+  description
+  }
+}
+</static-query>
+-->
 <script>
   export default {
     metaInfo: {

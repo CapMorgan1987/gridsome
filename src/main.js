@@ -19,8 +19,10 @@ export default function (Vue, { appOptions, head }) {
   const opts = {} //opts includes, vuetify themes, icons, etc.
   Vue.use(Vuetify)
 
+
   appOptions.vuetify = new Vuetify(opts);
 
   // Set default layout as a global component
-  Vue.component('Layout', DefaultLayout)
+  Vue.component('Layout', DefaultLayout);
+
 }

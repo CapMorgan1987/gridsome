@@ -54,7 +54,7 @@ query {
     transition: all 0.8s ease-out;
   }
   .slide-fade-leave-to
-                                                                                /* .slide-fade-leave-active below version 2.1.8 */ {
+       /* .slide-fade-leave-active below version 2.1.8 */ {
     transform: translateX(1000px);
     opacity: 0;
   }
@@ -65,5 +65,9 @@ query {
   .v-window__next,
   .v-window__prev {
     display: none !important;
+  }
+  .color p,
+  .color li {
+    color: white !important;
   }
 </style>

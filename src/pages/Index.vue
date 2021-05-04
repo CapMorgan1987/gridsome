@@ -13,13 +13,24 @@
       <v-carousel-item>
         <g-image src="~/assets/header.jpg" class="carousel-img" quality="40" />
         <h1 class="text-slider">
-          Samo nekoliko koraka dijeli vas od online uspjeha
+          <!-- {{ $static.pages.header1 }} -->
         </h1>
+        <!-- <p>{{ title }}</p> -->
       </v-carousel-item>
     </v-carousel>
   </Layout>
 </template>
-
+ <!--
+<static-query>
+query{
+ pages(id: "1"){
+   id
+  title
+  header1
+  }
+}
+</static-query>
+-->
 <script>
   export default {
     metaInfo: {

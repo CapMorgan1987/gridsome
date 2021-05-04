@@ -53,14 +53,22 @@
                     background-color="white"
                   ></v-textarea>
                 </v-col>
-                <v-col cols="12">
-                  <v-checkbox
-                    v-model="checkbox"
-                    label="Slanjem podataka putem ove kontakt forme, dozvoljavam da me AM-Website kontaktira u vezi mog upita, a moje prikupljene osobne podatke koristi i obrađuje dalje, sukladno izjavi o privatnosti."
-                  ></v-checkbox>
+                <v-col cols="12" class="check">
+                  <v-checkbox v-model="checkbox" :rules="checkboxlRules"
+                    ><template v-slot:label>
+                      <p>
+                        Slanjem podataka putem ove kontakt forme, dozvoljavam da
+                        me AM-Website kontaktira u vezi mog upita, a moje
+                        prikupljene osobne podatke koristi i obrađuje dalje,
+                        sukladno izjavi o privatnosti.
+                      </p>
+                    </template></v-checkbox
+                  >
                 </v-col>
                 <v-col cols="12">
-                  <v-btn class="mr-4" @click="submit">submit</v-btn>
+                  <v-btn class="mr-4" @click="submit" :disabled="!valid"
+                    >Pošalji</v-btn
+                  >
                 </v-col>
               </v-row>
             </v-container>
@@ -97,6 +105,8 @@
 </template>
 
 <script>
+  const axios = require("axios");
+
   export default {
     metaInfo: {
       title: "Kontakt",
@@ -112,13 +122,26 @@
         ],
         broj: "",
         tekst: "",
-        checkbox: true,
+        checkbox: false,
+        checkboxlRules: [(v) => !!v || "Obavezno polje"],
         valid: false,
       };
     },
     methods: {
       submit() {
-        console.log("Submited");
+        axios
+          .post("https://am-website.com/gridsome/mail/", {
+            from_mail: this.mail,
+            name: this.name,
+            number: this.broj,
+            message: this.tekst,
+          })
+          .then((r) => {
+            console.log(r);
+          })
+          .catch(() => {
+            console.log("error");
+          });
       },
     },
   };
@@ -127,5 +150,8 @@
 <style>
   .img-mail {
     max-width: 200px;
+  }
+  .check .v-input__slot {
+    align-items: end !important;
   }
 </style>
