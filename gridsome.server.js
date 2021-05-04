@@ -5,7 +5,7 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
-const axios = require('axios')
+// const axios = require('axios')
 
 const nodeExternals = require('webpack-node-externals')
 
@@ -21,35 +21,19 @@ module.exports = function (api) {
   })
 
   // api.loadSource(async actions => {
-  //   const { data } = await axios.get('http://localhost:1337/pages')
+  //   const { data } = await axios.get('http://localhost:1337/packages')
 
   //   const collection = actions.addCollection({
-  //     typeName: 'Pages'
+  //     typeName: 'Packages'
   //   })
 
-  //   for (const page of data) {
+  //   for (const package of data) {
   //     collection.addNode({
-  //       id: page.id,
-  //       title: page.title,
-  //       header1: page.header1,
-  //       description: page.description
+  //       id: package.id,
+  //       title: package.title,
+  //       content: package.content,
+  //       price: package.price
   //     })
   //   }
   // })
-  api.loadSource(async actions => {
-    const { data } = await axios.get('http://localhost:1337/packages')
-
-    const collection = actions.addCollection({
-      typeName: 'Packages'
-    })
-
-    for (const package of data) {
-      collection.addNode({
-        id: package.id,
-        title: package.title,
-        content: package.content,
-        price: package.price
-      })
-    }
-  })
 }

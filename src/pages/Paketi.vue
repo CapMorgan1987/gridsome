@@ -140,20 +140,19 @@
     <v-container>
       <v-row align="center" class="ma-5 pa-5 justify-space-around">
         <v-col
-          v-for="edge in $page.packages.edges"
-          :key="edge.id"
+          v-for="single in packages"
+          :key="single.id"
           cols="12"
           md="4"
           class="pa-5 rounded-xl ma-4 border-paket"
-          style="background-color: #4aade2"
         >
-          <h3 align="center" style="color: white">{{ edge.node.title }}</h3>
-          <div v-html="edge.node.content" class="py-3 color"></div>
+          <h3 align="center">{{ single.title }}</h3>
+          <div v-html="single.content" class="py-3 color"></div>
           <!-- <ul align="left">
             <li style="color: white">Grafički design landing stranice</li>
           </ul> -->
           <h3 align="center" class="py-5">
-            <strong style="color: white">{{ edge.node.price }}</strong>
+            <strong style="color: white">{{ single.price }}</strong>
           </h3>
         </v-col>
       </v-row>
@@ -161,25 +160,27 @@
   </Layout>
 </template>
 
-<page-query>
-query{
-  packages: allPackages{
-    edges{
-      node{
-        id
-        title
-        content
-        price
-      }
-    }
-  }
-}
- </page-query>
 
 <script>
+  import axios from "axios";
+
   export default {
     metaInfo: {
       title: "Paketi",
+    },
+    data() {
+      return {
+        packages: [],
+      };
+    },
+    async mounted() {
+      try {
+        const results = await axios.get("http://localhost:1337/packages");
+
+        this.packages = results.data;
+      } catch (error) {
+        console.log(error);
+      }
     },
   };
 </script>

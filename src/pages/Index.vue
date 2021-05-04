@@ -13,9 +13,8 @@
       <v-carousel-item>
         <g-image src="~/assets/header.jpg" class="carousel-img" quality="40" />
         <h1 class="text-slider">
-          <!-- {{ $static.pages.header1 }} -->
+          {{ info.header }}
         </h1>
-        <!-- <p>{{ title }}</p> -->
       </v-carousel-item>
     </v-carousel>
   </Layout>
@@ -32,9 +31,27 @@ query{
 </static-query>
 -->
 <script>
+  import axios from "axios";
+
   export default {
     metaInfo: {
       title: "Dobrodošli",
+    },
+    data() {
+      return {
+        info: {
+          header: "",
+        },
+      };
+    },
+    async mounted() {
+      try {
+        const results = await axios.get("http://localhost:1337/index");
+
+        this.info = results.data;
+      } catch (error) {
+        console.log(error);
+      }
     },
   };
 </script>

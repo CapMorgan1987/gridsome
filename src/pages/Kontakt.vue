@@ -154,4 +154,7 @@
   .check .v-input__slot {
     align-items: end !important;
   }
+  .v-messages__message {
+    color: crimson;
+  }
 </style>

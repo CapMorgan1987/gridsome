@@ -1,21 +1,15 @@
 <template>
   <Layout>
     <v-container>
-      <v-row align="center" class="ma-5" style="background-color: #4aade2">
+      <v-row
+        v-for="service in services"
+        :key="service.id"
+        align="center"
+        class="ma-5 background-package"
+      >
         <v-col cols="12" md="6" class="pa-sm-10 pa-5">
-          <h2 style="color: white !important">IZRADA WEB STRANICA</h2>
-          <p style="color: white !important">
-            Želite istaknuti vaše poduzeće, proizvod i/ili uslugu, a ne znate
-            kako? Mi imamo rješenje za vas! Nudimo vam
-            <strong style="color: white !important"
-              >uslugu dizajna, izradu landing stranica, klasičnih web stranica,
-              web shopova i dr</strong
-            >. Definirajte cilj i strategiju te privucite nove klijente uz
-            <strong style="color: white !important">inovativna rješenja</strong
-            >. U mogućnosti smo odgovoriti na svaki vaš zahtjev te u skladu s
-            vašim mogućnostima i željama napraviti ponudu koja će vam najviše
-            odgovarati.
-          </p>
+          <h2>{{ service.title }}</h2>
+          <div v-html="service.description" class="text-service"></div>
         </v-col>
         <v-col cols="12" md="6" class="usluge1">
           <!-- <g-image
@@ -27,64 +21,30 @@
               </g-image> -->
         </v-col>
       </v-row>
-      <v-row
-        align="center"
-        class="ma-5 d-flex flex-reverse"
-        style="background-color: #58585a"
-      >
-        <v-col cols="12" md="6" class="usluge2">
-          <!-- <g-image
-                src="~/assets/usluge2.jpg"
-                class="img-content"
-                quality="40"
-              >
-              </g-image> -->
-        </v-col>
-        <v-col cols="12" md="6" class="pa-sm-10 pa-5">
-          <h2 style="color: white !important">DIGITALNI MARKETING</h2>
-          <p style="color: white !important">
-            Kako biste uspješno poslovali nije dovoljno imati kvalitetnu i
-            modernu web stranicu, potreban je
-            <strong style="color: white !important">marketing</strong> koji će
-            vaše klijente spojiti s vama. Nudimo vam
-            <strong style="color: white !important"
-              >Facebook/Instagram i Google Ads</strong
-            >
-            oglašavanje, upravljanje društvenim mrežama, komunikaciju s
-            potencijalnim klijentima. Uz naš tim stručnjaka definirajte
-            strategiju i ostvarite cilj!
-          </p>
-        </v-col>
-      </v-row>
-      <v-row align="center" class="ma-5" style="background-color: #f2f2f2">
-        <v-col cols="12" md="6" class="pa-sm-10 pa-5">
-          <h2>PRIPREMA SADRŽAJA I FOTOGRAFIJA</h2>
-          <p>
-            Planirate izradu web stranica, a nemate tekst i fotografije? Ne
-            brinite, nudimo vam uslugu
-            <strong>pripreme tekstualnog i foto sadržaja</strong>. Dobar i
-            kvalitetan sadržaj prilikom izrade web stranice važan je kako bi
-            upoznali potencijalnog klijenta s vašim poduzećem, proizvodom i/ili
-            uslugom.
-          </p>
-        </v-col>
-        <v-col cols="12" md="6" class="usluge3">
-          <!-- <g-image
-                src="~/assets/usluge3.jpg"
-                class="img-content"
-                quality="40"
-              >
-              </g-image> -->
-        </v-col>
-      </v-row>
     </v-container>
   </Layout>
 </template>
 
 <script>
+  import axios from "axios";
+
   export default {
     metaInfo: {
       title: "Usluge",
+    },
+    data() {
+      return {
+        services: [],
+      };
+    },
+    async mounted() {
+      try {
+        const results = await axios.get("http://localhost:1337/services");
+
+        this.services = results.data;
+      } catch (error) {
+        console.log(error);
+      }
     },
   };
 </script>
@@ -93,10 +53,10 @@
   .usluge1,
   .usluge2,
   .usluge3 {
-    min-height: 500px; /* You must set a specified height */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
+    min-height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .usluge1 {
     background-image: url("./../assets/img/usluge1.jpg");
@@ -112,11 +72,8 @@
     .usluge1,
     .usluge2,
     .usluge3 {
-      min-height: 300px; /* You must set a specified height */
+      min-height: 300px;
       background-size: cover;
-    }
-    .flex-reverse {
-      flex-direction: column-reverse;
     }
   }
 </style>
