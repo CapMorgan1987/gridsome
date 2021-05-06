@@ -1,11 +1,11 @@
 <template>
   <Layout>
     <v-container>
-      <v-row align="center" class="ma-1 pa-1 pa-lg-5 justify-space-around">
+      <v-row align="center" class="ma-1 ma-lg-5 pa-lg-5 justify-space-around">
         <v-col
           cols="12"
           md="8"
-          class="pa-5 rounded-xl ma-4"
+          class="pa-1 pa-md-5 rounded-xl ma-1 ma-lg-5"
           style="background-color: #7cc8f180"
         >
           <v-form v-model="valid">
@@ -60,7 +60,10 @@
                         Slanjem podataka putem ove kontakt forme, dozvoljavam da
                         me AM-Website kontaktira u vezi mog upita, a moje
                         prikupljene osobne podatke koristi i obrađuje dalje,
-                        sukladno izjavi o privatnosti.
+                        sukladno
+                        <g-link to="/cookies/izjava-o-privatnosti"
+                          >Izjavi o privatnosti</g-link
+                        >
                       </p>
                     </template></v-checkbox
                   >
@@ -96,6 +99,21 @@
                 class="img-mail"
                 quality="40"
               ></g-image>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <g-link to="/cookies/politika-kolacica">Politika kolačića</g-link>
+              |
+              <g-link to="/cookies/zastita-privatnosti"
+                >Zaštita privatnosti</g-link
+              >
+              |
+              <g-link to="/cookies/uvjeti-koristenja">Uvjeti korištenja</g-link>
+              |
+              <g-link to="/cookies/izjava-o-privatnosti"
+                >Izjava o privatnosti</g-link
+              >
             </v-col>
           </v-row>
         </v-col>
@@ -138,6 +156,7 @@
           })
           .then((r) => {
             console.log(r);
+            this.$router.push("/hvala");
           })
           .catch(() => {
             console.log("error");

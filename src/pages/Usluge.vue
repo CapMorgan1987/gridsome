@@ -5,7 +5,7 @@
         v-for="service in services"
         :key="service.id"
         align="center"
-        class="ma-5 background-package"
+        class="ma-1 ma-lg-5 background-package"
       >
         <v-col cols="12" md="6" class="pa-sm-10 pa-5">
           <h2>{{ service.title }}</h2>
@@ -39,7 +39,9 @@
     },
     async mounted() {
       try {
-        const results = await axios.get("http://localhost:1337/services");
+        const results = await axios.get(
+          "https://aron-strapi-heroku.herokuapp.com/services"
+        );
 
         this.services = results.data;
       } catch (error) {

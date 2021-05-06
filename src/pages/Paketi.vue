@@ -138,7 +138,7 @@
 <template>
   <Layout>
     <v-container>
-      <v-row align="center" class="ma-5 pa-5 justify-space-around">
+      <v-row align="center" class="ma-1 ma-lg-5 justify-space-around">
         <v-col
           v-for="single in packages"
           :key="single.id"
@@ -175,7 +175,9 @@
     },
     async mounted() {
       try {
-        const results = await axios.get("http://localhost:1337/packages");
+        const results = await axios.get(
+          "https://aron-strapi-heroku.herokuapp.com/packages"
+        );
 
         this.packages = results.data;
       } catch (error) {

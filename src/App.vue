@@ -54,7 +54,7 @@ query {
     transition: all 0.8s ease-out;
   }
   .slide-fade-leave-to
-                                                                                                                                             /* .slide-fade-leave-active below version 2.1.8 */ {
+                                                                                                                                                     /* .slide-fade-leave-active below version 2.1.8 */ {
     transform: translateX(1000px);
     opacity: 0;
   }
@@ -106,5 +106,13 @@ query {
   .border-paket:nth-child(3) h3 strong,
   .border-paket:nth-child(3) li {
     color: #404040;
+  }
+  .cookies-page {
+    padding: 40px;
+    background-color: #4aade2;
+  }
+  .cookies-page h1,
+  .cookies-page p {
+    color: white;
   }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <v-container>
-      <v-row align="center" class="ma-5">
+      <v-row align="center" class="ma-1 ma-lg-5">
         <v-col cols="12" md="3" class="pl-m-10 pr-m-10">
           <h2 class="mb-3">{{ info.title }}</h2>
           <div v-html="info.description"></div>
@@ -43,7 +43,9 @@ query{
     },
     async mounted() {
       try {
-        const results = await axios.get("http://localhost:1337/o-nama");
+        const results = await axios.get(
+          "https://aron-strapi-heroku.herokuapp.com/o-nama"
+        );
 
         this.info = results.data;
       } catch (error) {

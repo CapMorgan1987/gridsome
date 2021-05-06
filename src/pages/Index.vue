@@ -13,7 +13,7 @@
       <v-carousel-item>
         <g-image src="~/assets/header.jpg" class="carousel-img" quality="40" />
         <h1 class="text-slider">
-          {{ info.header }}
+          {{ info.title }}
         </h1>
       </v-carousel-item>
     </v-carousel>
@@ -40,13 +40,15 @@ query{
     data() {
       return {
         info: {
-          header: "",
+          title: "",
         },
       };
     },
     async mounted() {
       try {
-        const results = await axios.get("http://localhost:1337/index");
+        const results = await axios.get(
+          "https://aron-strapi-heroku.herokuapp.com/index"
+        );
 
         this.info = results.data;
       } catch (error) {
