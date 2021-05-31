@@ -1,5 +1,5 @@
 # Default starter for Gridsome
-
+Vue verzija stranice am-website.com, koristio vue/gridsome, backend jer strapi na heroku-u.
 This is the project you get when you run `gridsome create new-project`.
 
 ### 1. Install Gridsome CLI tool if you don't have
